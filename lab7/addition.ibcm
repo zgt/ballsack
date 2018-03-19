@@ -1,0 +1,32 @@
+C00A 000      jmp    loop skip the vars
+0000 001 x    dw     0    int x
+0000 002 y    dw     0    int y
+0000 003 z    dw     0    int z
+0000 004 s    dw     0    int s
+0000 005
+0000 006
+0000 007
+0000 008
+0000 009
+1000 00A loop readH	  if s != 0 start again and read x
+4001 00B      store  x
+1000 00C      readH	  read y
+4002 00D      store  y
+1000 OOE      readH	  read z
+4003 00F      store  z
+3001 010      load   x    add x and y
+5002 011      add    y
+4004 012      store  s
+3004 013      load   s    add s and z
+5003 014      add    z
+4004 015      store  s
+1800 016      printH      prints s
+D019 017      jmpe   xit  jumps to exit if s = 0
+C00A 018      jmp    loop goes to loop start if s!=0
+3001 019 xit  load   x	  prints all 3 variables if they sum to 0
+1800 01A      printH
+3002 01B      load   y
+1800 01C      printH
+3003 01D      load   z
+1800 01E      printH
+0000 01F      halt
