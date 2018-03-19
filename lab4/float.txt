@@ -1,0 +1,6 @@
+Your magic (32 bit) floating point number is -8.828125
+This is the number that needs to be converted to (little endian) binary, and expressed in hexadecimal.
+
+Your other magic floating point number is, in hex, 0x00c01f40
+This is the number that needs to be converted to a (32 bit) floating point number.
+Note that the hexadecimal printed above is in little-endian format!

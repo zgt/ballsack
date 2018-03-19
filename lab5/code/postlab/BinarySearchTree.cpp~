@@ -1,0 +1,163 @@
+#include "BinarySearchTree.h"
+#include <string>
+#include <iostream>
+
+using namespace std;
+
+BinaryNode::BinaryNode(){
+  value = "";
+  left = NULL;
+  right = NULL;
+}
+
+BinarySearchTree::BinarySearchTree(){
+  root = NULL;
+  nodeCount = 0;
+}
+
+
+
+BinarySearchTree::~BinarySearchTree(){
+  empty();
+
+}
+
+void BinarySearchTree::insert(const string& x){
+  insert(x, root);
+  nodeCount++;
+}
+
+void BinarySearchTree::remove(const string& x){
+  remove(x, root);
+
+}
+
+string BinarySearchTree::pathTo(const string& x) const{
+  return pathTo(x, root);
+
+}
+
+bool BinarySearchTree::find(const string& x) const{
+  bool result = find(x, root);
+  return result;
+
+}
+
+int BinarySearchTree::numNodes() const{
+  return nodeCount;
+
+}
+
+void BinarySearchTree::insert(const string& x, BinaryNode* &r){
+  if(r ==NULL){
+    r = new BinaryNode();
+    r->value = x;
+  }
+  else if(r->value > x){
+    insert(x, r->left);
+  }
+  else if(r->value < x){
+    insert(x, r->right);
+  }}
+
+void BinarySearchTree::remove(const string& x, BinaryNode* &r){
+  if(r==NULL){
+    return;
+  }
+  if(r->value > x){
+    remove(x, r->left);
+  }
+  else if(r->value < x){
+    remove(x, r->right);
+  }
+  else if(r->left != NULL && r->right != NULL){
+    r->value = getMin(r->right)->value;
+    remove(r->value, r->right);
+  }
+  else{
+    BinaryNode* deleteNode = r;
+    if(r->left!=NULL){
+      r = r->left;
+    }
+    else
+      {
+	r=r->right;
+      }
+    delete deleteNode;
+    nodeCount--;
+  }
+}
+
+BinaryNode* BinarySearchTree::getMin(BinaryNode *r){
+  if(r==NULL)
+    return NULL;
+  if(r->left==NULL){
+    return r;
+  }
+  else{
+    getMin(r->left);
+  }
+}
+
+BinaryNode* BinarySearchTree::getMax(BinaryNode *r){
+  if(r==NULL)
+    return NULL;
+  if(r->right==NULL){
+    return r;
+  }
+  else{
+    getMax(r->right);
+  }
+}
+
+bool BinarySearchTree::find(const string& x, BinaryNode* r) const{
+  if(r==NULL){
+    return false;
+  }
+  else if(r->value==x){
+    return true;
+  }
+  else if(r->value > x){
+   return find(x, r->left);
+  }
+  else if(r->value < x){
+    return find(x, r->right);
+  }
+  else{
+    return false;
+  }
+  
+}
+
+string BinarySearchTree::pathTo(const string& x, BinaryNode* r) const{
+  
+  if(!find(x)){
+    return "";
+    }
+   if(r->value==x){
+    return r->value;
+  }
+  else if(r->value > x){
+    return (r->value +  " " + pathTo(x, r->left));
+  }
+  else if(r->value <x){
+    return (r->value + " " +  pathTo(x, r->right));
+  }
+  else{
+    return "";
+   }
+
+}
+
+void BinarySearchTree::empty(){
+  empty(root);
+}
+
+void BinarySearchTree::empty(BinaryNode* &r) const{
+  if(r!=NULL){
+    empty(r->right);
+    empty(r->left);
+    delete r;
+  }
+  r=NULL;
+}

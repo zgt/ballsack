@@ -1,0 +1,5 @@
+Matt Calayo mjc5gh postlab1.questions.txt 1/23/18
+
+1. I looked up what -> means and it said it was an arrow operator and that it is used to access members of a structure through a pointer. Since l is a pointer to a list, does this mean that l -> display(); would be the same thing as l.display(); in java?
+
+2. At first it confused me that the list was printed backwards before I saw the comment in the display method. Is this the best way to print it or would printing it the right way be viable?

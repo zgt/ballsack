@@ -1,0 +1,5 @@
+Matt Calayo mjc5gh 2/8/18 difficulties.txt
+
+After I finished the in-lab and was going to start working on the post-lab, I wanted to ssh to get the files from the in-lab to use for the post-lab. I just wanted to try using ssh to start to learn how to use it. I sshed onto my lab account and saw all the files but when I tried to scp the files back to my laptop, I messed up. I didn't know that I was just supposed to scp instead of ssh so I ended up copying the directory I wanted back onto my lap account and accidentally created a large amount of files and directories. I can't fix it yet but I am going to delete all of them next in-lab.
+
+When working on the post-lab, after I finished everything I compiled my files to test them. I got an error that said "fatal error: error in backend: io failure on output stream" which after looking up the error meant that I had run out of disk space on my virtual machine. I tried to allocate more space to it as well as delete extra files that were taking up space. After this didn't work I restarted my virtual machine and it said I had 9gb of free space and my files compiled.

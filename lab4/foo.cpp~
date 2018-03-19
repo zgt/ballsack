@@ -1,0 +1,13 @@
+#include <iostream>
+using namespace std;
+
+union foo{
+  float f;
+  int *x;
+} bar;
+
+int main(){
+  bar.f = 0;
+  cout <<bar.x << endl;
+  return 0;
+}
