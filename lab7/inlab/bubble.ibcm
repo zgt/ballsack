@@ -1,0 +1,77 @@
+C011 000  start	jmp   start
+0002 001  a	dw    5	      a[]
+0005 002  a[0]  dw    5	      a[0]
+0001 003  a[1]	dw    1	      a[1]
+0002 004  a[2]	dw    2	      a[2]
+0009 005  a[3]	dw    9	      a[3]
+000B 006  a[4]	dw    11      a[4]
+0005 007  max	dw    5	      max size = 5
+0000 008  x	dw    0	      int i
+0004 009  y	dw    4	      max - 1
+0001 00A  one	dw    1	      1
+4000 00B  stit	dw    4000    store it!
+3000 00C  ldit	dw    3000    load it!
+0000 00D  curr	dw    0	      current item
+0000 00E  prev	dw    0	      previous item
+0000 00F
+0000 010
+3007 011 start	load  max     loop while x < max
+6008 012 	sub   x	      if max-x is <= 0 then stop
+E042 013	jmpl  exit1
+D042 014	jmpe  exit1
+3009 015 yloop  load  y       loop while y > x
+6008 016	sub   x	      if y - x <= 0 then stop
+D03B 017	jmpe  exit2
+E03B 018	jmpl  exit2
+300C 019	load  ldit    calls loader
+5001 01A	add   a[]
+5009 01B	add   y	      results in loading a[y]
+401D 01C	store doit    storing instruction
+0000 01D doit	dw    0
+400D 01E 	store curr    storing current element
+300C 01F	load  ldit    calls loader
+5001 020	add   a[]
+5009 021	add   y
+600A 022	sub   one     subtracts 1 resulting in a[y-1]
+4024 023	store doit2   storing instruction
+0000 024 doit2	dw    0
+400E 025	store prev    stores element at a[y-1]
+300D 026	load  curr
+600E 027	sub   prev    performs a[y]-a[y-1]
+E02A 028	jmpl  exl     if greater than 1 continues
+C037 029	jmp   exl2
+300B 02A exl	load  stit    calls storer
+5001 02B 	add   a[]
+5009 02C	add   y	      results in storing a[y]
+402F 02D	store doit3   storing instruction
+300E 02E	load  prev
+0000 02F doit3	dw    0
+300B 030 	load  stit    swapping value of curr to prev
+5001 031	add   a[]
+5009 032	add   y
+600A 033	sub   one     subtracts 1 resulting in location of a[y-1]
+4036 034	store doit4   storing instruction
+300D 035	load  curr
+0000 036 doit4	dw    0
+3009 037 exl2	load  y
+600A 038 	sub   one     incrementing down
+4009 039	store y
+C015 03A	jmp   yloop
+3008 03B exl3	load  x
+500A 03C	add   one     incrementing up
+4008 03D	store x
+3007 03E	load  max
+600A 03F	sub   one
+4009 040	store y
+C011 041	jmp   start
+3002 042	load  a[0]
+1800 043	printH
+3003 044	load  a[1]
+1800 045	printH
+3004 046	load  a[2]
+1800 047	printH
+3005 048	load  a[3]
+1800 049	printH
+3006 04A        load  a[4]
+1800 04B	printH
+0000 04C	halt
