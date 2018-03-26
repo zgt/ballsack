@@ -1,0 +1,17 @@
+C004 000       jmp    start    jump to after vars
+3000 001 ldit  dw     load     load it!
+0001 002       dw     one	     1
+0010 003       dw     length   length of program
+3003 004 start load   length   loading length to form loop
+6020 005       sub    i	      subtracting i, which is not declared and is 0 because it is past the declared program
+E010 006       jmpl   end      if i is greater than length then jump to end
+3001 007       load   ldit     loading ldit
+5020 008       add    i	       adding i, initially 0 to load each line
+400A 009       store  doit     storing doit function
+0000 00A doit  dw     doit
+1800 00B       printH
+3020 00C       load   i	       loading i
+5002 00D       add    one      incrementing 1
+4020 00E       store  i	       storing i
+C004 00F       jmp    start    jumping back to start of loop
+0000 010       end    	       end of the program
