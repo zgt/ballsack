@@ -1,4 +1,4 @@
-# Makefile for CS 2150 pre-lab 8
+# Matt Calayo mjc5gh 3/28/18 Makefile
 # This Makefile shows how to link assembly with C/C++
 
 # Defines the C++ compiler we'll be using

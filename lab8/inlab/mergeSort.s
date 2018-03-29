@@ -1,6 +1,6 @@
-; University of Virginia
-; CS 2150 In-Lab 8
-; Spring 2018
+; Matt Calayo
+; mjc5gh
+; 3/28/18
 ; mergeSort.s	
 
 	global mergeSort
@@ -14,52 +14,86 @@
 ; Parameter 3 is the right index in the array
 ; Return type is void 
 mergeSort:
-	push r12		;start of array
-	push r13		;start
-	push r14		;end
-	push r15		;mid
-	mov  r12, rdi		
-
-	mov r14, rdx		;mov end to r13
-	mov r13, rsi		;mov start to r12
-	cmp r13, rdx
-	jl  mergeSortL
-	jmp mergeSortdone
+	cmp rsi, rdx
+	jge mergeSortdone
+	jmp mergeSortL
 
 mergeSortL:
-	mov r15, r13		;mid = (start + end)/2
-	add r15, r14
-	sar r15, 1
-	push rdi
-	push rsi
-	push rdx
-	mov rdi, r12
-	mov rsi, r13
-	mov rdx, r15
-	mov rcx, r14
+	push rdi		;start of array
+	push rsi		;start
+	push rdx		;end
+	push rcx		;mid
+	push r12
+	push r13
+
+	mov r12, rsi		;mid = (start + end)/2
+	add r12, rdx
+	sar r12, 1
+	
+	mov rdx, r12
 
 	call mergeSort
 
-	pop rdi
-	pop rsi
+	pop r13
+	pop r12
+	pop rcx
 	pop rdx
+	pop rsi
+	pop rdi
 
-	mov rdi, r12
-	mov rsi, r13
-	mov rdx, r15
-	add r15, 1
-	mov rcx, r14
+	push rdi		
+	push rsi		
+	push rdx		
+	push rcx		
+	push r12
+	push r13
+
+	mov r12, rsi		;mid +1
+	add r12, rdx
+	
+	sar r12, 1
+	
+	add r12, 1
+	mov rsi, r12
+
 	
 	call mergeSort
 
+	pop r13
+	pop r12
+	pop rcx
+	pop rdx
+	pop rsi
+	pop rdi
+
+	push rdi		
+	push rsi		
+	push rdx		
+	push rcx		
+	push r12
+	push r13
+
+	mov r12, rsi
+	add r12, rdx
+	
+	sar r12, 1
+	mov rcx, rdx
+	
+	mov rdx, r12
+	call merge
+
+	pop r13
+	pop r12
+	pop rcx
+	pop rdx
+	pop rsi
+	pop rdi
 	
 
-mergeSortdone:
-	push r10
-	push r11
-	call merge
-	pop r10
-	pop r11
+	
+
+mergeSortdone:	
+	ret
 
 	
 	

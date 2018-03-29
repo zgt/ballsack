@@ -1,8 +1,5 @@
 /*
-University of Virginia
-CS 2150 In-Lab 8
-Spring 2018 
-Test file for mergeSort
+Matt Calayo mjc5gh 3/28/18 testMergeSort.cpp
 */
 
 #include <iostream>
