@@ -1,0 +1,14 @@
+#include <iostream>
+using namespace std;
+
+extern "C" int threexplusone( int x);
+
+int main(){
+  int x;
+
+  cout << "Enter x: ";
+  cin >> x ;
+
+  cout <<threexplusone(x)<<endl;
+  return 0;
+}
