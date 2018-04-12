@@ -1,3 +1,4 @@
+//Matt Calayo mjc5gh linkedlist.c
 #include <stdio.h>
 #include <stdlib.h>
 
