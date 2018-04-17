@@ -42,7 +42,12 @@ void huffmanTree::printPrefix(){
 
 void huffmanTree::printPrefix(huffmanNode* n, string pre){
   if(n->left==NULL&&n->right==NULL){
+    if(n->val == ' '){
+      cout<<"space"<<" "<<pre<<endl;
+    }
+    else{
     cout<<n->val<<" "<<pre<<endl;
+    }
   }
   if(n->left!=NULL){
     printPrefix(n->left, pre+"0");
