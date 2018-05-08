@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <time.h>
+#include <iostream>
 
 // The list of all the place names that we'll be using
 /**
@@ -76,6 +77,7 @@ MiddleEarth::MiddleEarth (int xsize, int ysize, int num_cities, int seed) {
     // count the number of cities in the array
     for ( num_city_names = 0; all_city_names[num_city_names] != "END";
             num_city_names++ );
+    cout<<num_city_names<<endl;
     if ( num_cities > num_city_names ) {
         cout << "There are only " << num_city_names << " city names, so "
              << num_cities << " cities cannot be created.\nExiting." << endl;
